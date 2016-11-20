@@ -1,12 +1,23 @@
-function startTime() {
-    var today = new Date();
-    document.getElementById('time').innerHTML =
-        checkTime(today.getHours()) + " " + checkTime(today.getMinutes());
-    var t = setTimeout(startTime, 500);
-}
-function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
+function post(path, params, method) {
+	method = method || "post";
+
+	var form = document.createElement("form");
+	form.setAttribute("method", method);
+	form.setAttribute("action", path);
+
+	for(var key in params) {
+		if(params.hasOwnProperty(key)) {
+			var hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", key);
+			hiddenField.setAttribute("value", params[key]);
+
+			form.appendChild(hiddenField);
+		}
+	}
+
+	document.body.appendChild(form);
+	form.submit();
 }
 
 function interpretSearch() {
@@ -16,37 +27,31 @@ function interpretSearch() {
     switch(search[0])
     {
         case '?':
-            alert("t: twitter\ntw: twitch\nr: reddit\ny: youtube\na: amazon");
+            alert("c: 4chan\nr: reddit\nt: twitch\nyt: youtube");
             break;
-        case 't:':
-            window.location.href = "https://twitter.com/" + search[1];
-            return false;
-        case 'tw:':
-            window.location.href = "https://twitch.tv/" + search[1];
+        case 'c:':
+            window.location.href = "https://4chan.org/" + search[1];
             return false;
         case 'r:':
             window.location.href = "https://reddit.com/r/" + search[1];
             return false;
-        case 'y:':
+        case 't:':
+            window.location.href = "https://twitch.tv/" + search[1];
+            return false;
+        case 'yt:':
             for(var i = 1; i < search.length; i++)
             {
                 searchTerms += search[i]+'+';
             }
             window.location.href = "https://youtube.com/results?search_query=" + searchTerms;
             return false;
-        case 'a:':
+        default:
+	    searchTerms += search[0]
             for(var i = 1; i < search.length; i++)
             {
-                searchTerms += search[i]+'+';
-            }
-            window.location.href = "https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=" + searchTerms;
-            return false;
-        default:
-            for(var i = 0; i < search.length; i++)
-            {
-                searchTerms += search[i]+'+';
+                searchTerms += ' '+search[i];
             };
-            window.location.href = "https://google.com/search?q="+searchTerms;
+            post("https://startpage.com/do/search", {query: searchTerms, t: "night"});
             return false;
     }
 };
