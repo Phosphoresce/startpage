@@ -20,6 +20,23 @@ function post(path, params, method) {
 	form.submit();
 }
 
+function timer(duration, temp) {
+    var display = document.querySelector('#time'),
+        timer = new CountDownTimer(duration),
+        timeObj = CountDownTimer.parse(duration);
+
+    format(timeObj.minutes, timeObj.seconds);
+    
+    timer.onTick(format);
+    timer.start();
+    
+    function format(minutes, seconds) {
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        display.textContent = minutes + ':' + seconds + " at " + temp " degrees farenheit.";
+    }
+}
+
 function interpretSearch() {
     var search = document.getElementById("js-search-input").value.split(" ");
     var searchTerms = "";
@@ -27,13 +44,16 @@ function interpretSearch() {
     switch(search[0])
     {
         case '?':
-            alert("c: 4chan\nr: reddit\nt: twitch\nyt: youtube");
+            alert("c: 4chan\nr: reddit\ng: github\nt: twitch\nyt: youtube\n\nTea Timers\nbt: black tea\ngt: green tea");
             break;
         case 'c:':
             window.location.href = "https://4chan.org/" + search[1];
             return false;
         case 'r:':
             window.location.href = "https://reddit.com/r/" + search[1];
+            return false;
+        case 'g:':
+            window.location.href = "https://github.com/" + search[1];
             return false;
         case 't:':
             window.location.href = "https://twitch.tv/" + search[1];
@@ -45,6 +65,12 @@ function interpretSearch() {
             }
             window.location.href = "https://youtube.com/results?search_query=" + searchTerms;
             return false;
+	case 'bt':
+	    timer(4, 208)
+	    break;
+	case 'gt':
+	    timer(2, 180)
+	    break;
         default:
 	    searchTerms += search[0]
             for(var i = 1; i < search.length; i++)
