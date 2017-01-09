@@ -15,5 +15,8 @@ Commands
 
 + 'c:' takes you to a specified 4chan board
 + 'r:' takes you to a specified subreddit
++ 'g:' takes you to a specified github user page
 + 't:' takes you to a specified twitch user page
 + 'yt:' searches youtube
++ 'bt' sets a timer for black tea
++ 'gt' sets a timer for green tea
