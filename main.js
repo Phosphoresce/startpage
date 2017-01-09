@@ -21,17 +21,17 @@ function post(path, params, method) {
 }
 
 function timer(duration, temp) {
-    var timer = new CountDownTimer(duration),
+    var display = document.querySelector('#time');
+    	timer = new CountDownTimer(duration),
         timeObj = CountDownTimer.parse(duration);
 
-    format(timeObj.minutes, timeObj.seconds, temp);
+    format(timeObj.minutes, timeObj.seconds, temp, display);
     
     timer.onTick(format);
     timer.start();
 }
 
-function format(minutes, seconds, temp) {
-	var display = document.querySelector('#time');
+function format(minutes, seconds, temp, display) {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = minutes + ':' + seconds + " at " + temp + " degrees farenheit.";
