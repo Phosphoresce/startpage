@@ -65,10 +65,10 @@ function interpretSearch() {
             }
             window.location.href = "https://youtube.com/results?search_query=" + searchTerms;
             return false;
-	case 'bt':
+	case '!bt':
 	    timer(4, 208)
 	    break;
-	case 'gt':
+	case '!gt':
 	    timer(2, 180)
 	    break;
         default:
