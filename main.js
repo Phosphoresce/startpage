@@ -21,7 +21,7 @@ function post(path, params, method) {
 }
 
 function timer(duration, temp) {
-    var display = timer = new CountDownTimer(duration),
+    var timer = new CountDownTimer(duration),
         timeObj = CountDownTimer.parse(duration);
 
     format(timeObj.minutes, timeObj.seconds, temp);
@@ -31,7 +31,7 @@ function timer(duration, temp) {
 }
 
 function format(minutes, seconds, temp) {
-	var display = document.querySelector('#time')
+	var display = document.querySelector('#time');
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = minutes + ':' + seconds + " at " + temp + " degrees farenheit.";
