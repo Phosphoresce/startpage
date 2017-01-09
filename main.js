@@ -29,12 +29,12 @@ function timer(duration, temp) {
     
     timer.onTick(format);
     timer.start();
-    
-    function format(minutes, seconds) {
+}
+
+function format(minutes, seconds) {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = minutes + ':' + seconds + " at " + temp " degrees farenheit.";
-    }
 }
 
 function interpretSearch() {
