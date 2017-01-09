@@ -53,11 +53,13 @@ function interpretSearch() {
     			alert("Tea is ready");
 			return false;
 		}, 240000);
+		break;
 	case '!gt':
 		setTimeout(function(){
     			alert("Tea is ready");
 			return false;
 		}, 240000);
+		break;
         default:
 	    	searchTerms += search[0]
             	for(var i = 1; i < search.length; i++)
