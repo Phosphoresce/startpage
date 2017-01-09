@@ -20,16 +20,6 @@ function post(path, params, method) {
 	form.submit();
 }
 
-function sleep(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function timer(ms) {
-	await sleep(ms);
-	console.log('tea is ready');
-	alert("Tea is ready!");
-}
-
 function interpretSearch() {
 	var search = document.getElementById("js-search-input").value.split(" ");
     	var searchTerms = "";
@@ -59,11 +49,15 @@ function interpretSearch() {
             	window.location.href = "https://youtube.com/results?search_query=" + searchTerms;
             	return false;
 	case '!bt':
-	    	timer(240000)
-	    	return false;
+		setTimeout(function(){
+    			alert("Tea is ready");
+			return false;
+		}, 240000);
 	case '!gt':
-	    	timer(120000)
-	    	return false;
+		setTimeout(function(){
+    			alert("Tea is ready");
+			return false;
+		}, 240000);
         default:
 	    	searchTerms += search[0]
             	for(var i = 1; i < search.length; i++)
