@@ -50,15 +50,15 @@ function interpretSearch() {
             	return false;
 	case '!bt':
 		setTimeout(function(){
-    			alert("Tea is ready");
+			alert("Tea is ready");
 			return false;
 		}, 240000);
 		break;
 	case '!gt':
 		setTimeout(function(){
-    			alert("Tea is ready");
+			alert("Tea is ready");
 			return false;
-		}, 240000);
+		}, 120000);
 		break;
         default:
 	    	searchTerms += search[0]
