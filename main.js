@@ -57,7 +57,7 @@ function interpretSearch() {
 			
 		if(searchTerms.indexOf('.') !== -1)
 		{
-			window.location.href = searchTerms;
+			window.location.href = "https://" + searchTerms;
 		}
 		else
 		{
