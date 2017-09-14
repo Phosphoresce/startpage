@@ -27,7 +27,7 @@ function interpretSearch() {
     	switch(search[0])
     	{
       	case '?':
-        	alert("c: 4chan\nr: reddit\ng: github\nt: twitch\nyt: youtube\n\nTea Timers\nbt: black tea\ngt: green tea");
+        	alert("c: 4chan\nr: reddit\ng: github\nt: twitch\nyt: youtube\n\nTea Timers");
             	break;
         case 'c:':
             	window.location.href = "https://4chan.org/" + search[1];
@@ -54,7 +54,15 @@ function interpretSearch() {
             	{
                 	searchTerms += ' '+search[i];
            	};
-            	post("https://startpage.com/do/search", {query: searchTerms, t: "night"});
+			
+		if(searchTerms.indexOf('.') !== -1)
+		{
+			window.location.href = searchTerms;
+		}
+		else
+		{
+            		post("https://startpage.com/do/search", {query: searchTerms, t: "night"});
+		}
            	return false;
     	}
 };
