@@ -27,7 +27,7 @@ function interpretSearch() {
     	switch(search[0])
     	{
       	case '?':
-        	alert("c: 4chan\nr: reddit\ng: github\nt: twitch\nyt: youtube\n");
+        	alert("c: 4chan\nr: reddit\ng: github\nt: twitch\njp: 日本語 dictionary\nyt: youtube\nwa: wolfram alpha\n");
             	break;
         case 'c:':
             	window.location.href = "https://4chan.org/" + search[1];
@@ -41,6 +41,9 @@ function interpretSearch() {
         case 't:':
             	window.location.href = "https://twitch.tv/" + search[1];
             	return false;
+	case 'jp:':
+		window.location.href = "https://www.japandict.com/" + search[1];
+		return false;
         case 'yt:':
             	for(var i = 1; i < search.length; i++)
             	{
