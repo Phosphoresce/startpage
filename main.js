@@ -4,6 +4,8 @@ function post(path, params, method) {
 	var form = document.createElement("form");
 	form.setAttribute("method", method);
 	form.setAttribute("action", path);
+	document.getElementById(form.id).focus();
+	document.getElementById(form.id).select();
 
 	for(var key in params) {
 		if(params.hasOwnProperty(key)) {
