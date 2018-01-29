@@ -27,7 +27,7 @@ function interpretSearch() {
     	switch(search[0])
     	{
       	case '?':
-        	alert("c: 4chan\nr: reddit\ng: github\nt: twitch\nyt: youtube\n\nTea Timers");
+        	alert("c: 4chan\nr: reddit\ng: github\nt: twitch\nyt: youtube\n");
             	break;
         case 'c:':
             	window.location.href = "https://4chan.org/" + search[1];
@@ -47,6 +47,13 @@ function interpretSearch() {
                 	searchTerms += search[i]+'+';
             	}
             	window.location.href = "https://youtube.com/results?search_query=" + searchTerms;
+            	return false;
+	case 'wa:':
+            	for(var i = 1; i < search.length; i++)
+            	{
+                	searchTerms += search[i]+'+';
+            	}
+            	window.location.href = "https://www.wolframalpha.com/input/?i=" + searchTerms;
             	return false;
         default:
 	    	searchTerms += search[0]
